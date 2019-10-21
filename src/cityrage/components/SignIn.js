@@ -9,12 +9,12 @@ const SignIn = ({ signIn, signUp }) => {
 
   const handleClick = (fn, params) => {
     let newErrors = [];
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       let error = "You have entered an invalid email address!";
       newErrors.push(error);
     }
-    if (password.length < 5) {
-      let error = "Please use more than 5 characters.";
+    if (password.length < 6) {
+      let error = "Please use more than 6 characters.";
       newErrors.push(error);
     }
     
@@ -32,20 +32,20 @@ const SignIn = ({ signIn, signUp }) => {
     if (isSignup) {
       return (
         <ButtonContainer>
-          <div onClick={() => handleClick(signIn, [email, password])}>
+          <div onClick={() => handleClick(signUp, [email, password])}>
             Sign Up
           </div>
-          <Message onClick={() => setIsSignup(true)}>Need an account?</Message>
+          <Message onClick={() => setIsSignup(false)}>Already Have an Account?</Message>
         </ButtonContainer>
       );
     }
     return (
       <ButtonContainer>
-        <div onClick={() => handleClick(signUp, [email, password])}>
+        <div onClick={() => handleClick(signIn, [email, password])}>
           Sign In
         </div>
-        <Message onClick={() => setIsSignup(false)}>
-          Already Have an Account?
+        <Message onClick={() => setIsSignup(true)}>
+          Need an account?
         </Message>
       </ButtonContainer>
     );
@@ -75,10 +75,31 @@ const SignIn = ({ signIn, signUp }) => {
           </InputContainer>
         </div>
       </Form>
+      <Errors errors={errorMessages} />
       {SignUpMessage()}
     </Container>
   );
 };
+
+const Errors = (props) => (
+  <ErrorContainer>
+    {props.errors.map((message, idx) => <Error key={idx}>{message}</Error>)}
+  </ErrorContainer>
+);
+
+const ErrorContainer = styled.div`
+  display: flex;
+  align-content: flex-end;
+  flex-direction: column;
+  margin: 10px 0;
+  font-size: .8em;
+  color: red;
+`;
+
+const Error = styled.div`
+  flex: 1;
+  display: flex;
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -100,7 +121,8 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  flex-basis: 25%;
+  flex-basis: 35%;
+  flex-grow: 50%;
 `;
 
 const InputContainer = styled.div`
@@ -125,11 +147,6 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-`;
-
-const ErrorContainer = styled.div`
-
-
 `;
 
 export default SignIn;

@@ -52,8 +52,8 @@ export const startListeningToAuthChanges = () => (dispatch) => {
     if (user) {
       dispatch(signedIn(user));
 
-      const gameIdVal = '';
-      const obj = '';
+      let gameIdVal = '';
+      let obj = '';
       database.ref(`users/${user.uid}/currentGame`).once('value', (gameId) => {
         if (gameId.val() !== undefined || gameId.val() !== '') {
           gameIdVal = gameId.val();

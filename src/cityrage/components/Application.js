@@ -27,6 +27,7 @@ const renderRoutes = status => {
         <Route exact path="/games-list" component={GamesList} />
         <Route path="/games-list/lobby/:game" component={Lobby} />
         <Route path="/rules" component={Rules} />
+        <Redirect to="/cityrage" />
       </Switch>
     );
   }
@@ -83,10 +84,6 @@ const Column = styled.div`
   display: flex;
   text-align: center;
   align-items: center;
-  :hover {
-    color: white;
-    font-weight: bold;
-  }
 `;
 
 const NavContainer = styled.div`
