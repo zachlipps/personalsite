@@ -83,12 +83,13 @@ const setFirstPlayer = () => (dispatch, storeState) => {
     game.child('/currentTurn').set(firstPlayerIdx);
     game.child('/gameSize').set(gameSize);
     return playersArray.val()[firstPlayerIdx];
-  }).then((firstPlayer) => {
+  }).then((firstPlayer)=> {
     game.child('/players').once('value')
     .then((players) => {
-      game.child('/chosenOne').set({ uid: players.val()[firstPlayer].uid, displayName: players.val()[firstPlayer].displayName, photoURL: players.val()[firstPlayer].photoURL });
+      game.child('/chosenOne').set({ uid: players.val()[firstPlayer].uid });
     });
-  }).then(() => {
+  })
+  .then(() => {
     game.child('started').set(true);
   });
 };

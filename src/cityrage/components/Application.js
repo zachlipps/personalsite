@@ -23,10 +23,10 @@ const renderRoutes = status => {
     return (
       <Switch>
         <Route exact path="/cityrage" component={Home} />
-        <Route path="/newgame" component={NewGame} />
-        <Route exact path="/games-list" component={GamesList} />
-        <Route path="/games-list/lobby/:game" component={Lobby} />
-        <Route path="/rules" component={Rules} />
+        <Route path="/cityrage/newgame" component={NewGame} />
+        <Route exact path="/cityrage/games-list" component={GamesList} />
+        <Route path="/cityrage/games-list/lobby/:game" component={Lobby} />
+        <Route path="/cityrage/rules" component={Rules} />
         <Redirect to="/cityrage" />
       </Switch>
     );

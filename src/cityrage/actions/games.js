@@ -32,7 +32,7 @@ const updateGameData = gameData => ({
   gameData,
 });
 
-export const joinGame = (uid, gid) => (dispatch, storeState) => {
+export const joinGame = (uid, gid, nickname) => (dispatch, storeState) => {
   let game = '';
   const LeaveGid = storeState().auth.gid;
   const oldGame = database.ref(`games/${LeaveGid}`);
@@ -80,6 +80,16 @@ export const joinGame = (uid, gid) => (dispatch, storeState) => {
         if (playersInGame.val() && playersInGame.val().length < gameSettings.maxPlayers) {
           // error handle
         }
+      })
+      .then(() => {
+        game.child('/nameMap').once('value')
+        .then(nameMap => {
+          if(!nameMap.val()) {
+            game.child('/nameMap').set({ [uid] : nickname });
+          } else {
+            game.child('/nameMap').set({...nameMap.val(), [uid] : nickname})
+          }
+        })
       })
       .then(() => {
         game.once('value').then((gameData) => {
