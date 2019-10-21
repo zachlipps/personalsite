@@ -5,14 +5,13 @@ import Loading from "./Loading";
 import Lobby from "../containers/LobbyContainer";
 import Home from "../containers/HomeContainer";
 import NewGame from "../containers/NewGameContainer";
+import SignIn from "../containers/SignInContainer";
 import GamesList from "../containers/GamesListContainer";
 import Rules from "../components/Rules";
 import "../assets/App.css";
 import logo from "../assets/media/iconlrg.png";
-import SignIn from "./SignIn";
 
 const renderRoutes = status => {
-  debugger;
   if (status === "ANONYMOUS") {
     return (
       <Switch>
@@ -37,45 +36,46 @@ const Application = props => {
   const { auth, signOut } = props;
 
   return (
-    <main className="Application">
-      <div>
-        <NavContainer>
-          <Column>
-            <img
+    <AppContainer
+      className="Application"
+      style={{ width: "100%", height: "100%" }}
+    >
+      <NavContainer>
+        <Column>
+          <img
+            style={{
+              width: "40px",
+              padding: "6px",
+              cursor: "pointer"
+            }}
+            src={logo}
+            onClick={() => props.history.push("/cityrage")}
+          />
+        </Column>
+        <Column>
+          <NavLink to="/">Home</NavLink>
+          {auth.status === "ANONYMOUS" && (
+            <NavLink to="/cityrage/signin">Sign In</NavLink>
+          )}
+          {auth.status === "SIGNED_IN" && (
+            <div
               style={{
-                width: "40px",
-                padding: "6px",
-                cursor: "pointer"
+                alignSelf: "center",
+                display: "flex",
+                alignItems: "center"
               }}
-              src={logo}
-              onClick={() => props.history.push("/cityrage")}
-            />
-          </Column>
-          <Column>
-            <NavLink to="/">Home</NavLink>
-            {auth.status === "ANONYMOUS" && (
-              <NavLink to="/cityrage/signin">Sign In</NavLink>
-            )}
-            {auth.status === "SIGNED_IN" && (
-              <div
-                style={{
-                  alignSelf: "center",
-                  display: "flex",
-                  alignItems: "center"
-                }}
-                onClick={() => {
-                  auth && signOut(auth.uid);
-                }}
-              >
-                Sign Out
-              </div>
-            )}
-          </Column>
-        </NavContainer>
-        {auth.status === "AWAITING_AUTH_RESPONSE" && <Loading />}
-        {renderRoutes(auth.status)}
-      </div>
-    </main>
+              onClick={() => {
+                auth && signOut(auth.uid);
+              }}
+            >
+              Sign Out
+            </div>
+          )}
+        </Column>
+      </NavContainer>
+      {auth.status === "AWAITING_AUTH_RESPONSE" && <Loading />}
+      {renderRoutes(auth.status)}
+    </AppContainer>
   );
 };
 
@@ -116,6 +116,11 @@ const NavStyles = css`
 
 const NavLink = styled(Link)`
   ${NavStyles};
+`;
+
+const AppContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
 `;
 
 export default withRouter(Application);

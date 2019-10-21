@@ -5,7 +5,7 @@ import { signIn, signOut } from '../actions/auth';
 const mapStateToProps = state => (state);
 
 const mapDispatchToProps = dispatch => ({
-  signIn() { dispatch(signIn()); },
+  signIn(...args) { dispatch(signIn(...args)); },
   signOut(...args) { dispatch(signOut(...args)); },
 });
 

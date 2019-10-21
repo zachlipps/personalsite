@@ -1,17 +1,17 @@
-import rick from './Assets/media/funMonsters/rick.png';
-import cenaSmash from './Assets/media/funMonsters/cenaSmash.png';
-import cyberKitty from './Assets/media/funMonsters/cyberKitty.png';
-import gigazaur from './Assets/media/funMonsters/gigazaur.png';
-import golfMeeseeks from './Assets/media/funMonsters/golfMeeseeks.png';
-import kingDedede from './Assets/media/funMonsters/kingDedede.png';
-import gollum from './Assets/media/funMonsters/gollum.png';
-import pekka from './Assets/media/funMonsters/pekka.png';
-import stewie from './Assets/media/funMonsters/stewie.png';
-import zombie from './Assets/media/funMonsters/zombie.png';
-import cube from './Assets/media/funMonsters/cube.png';
-import Lordofevil from './Assets/media/funMonsters/Lordofevil.png';
-import Aloak from './Assets/media/funMonsters/Aloak.png';
-import Firebase from './Assets/media/funMonsters/Firebase.png';
+import rick from './assets/media/funMonsters/rick.png';
+import cenaSmash from './assets/media/funMonsters/cenaSmash.png';
+import cyberKitty from './assets/media/funMonsters/cyberKitty.png';
+import gigazaur from './assets/media/funMonsters/gigazaur.png';
+import golfMeeseeks from './assets/media/funMonsters/golfMeeseeks.png';
+import kingDedede from './assets/media/funMonsters/kingDedede.png';
+import gollum from './assets/media/funMonsters/gollum.png';
+import pekka from './assets/media/funMonsters/pekka.png';
+import stewie from './assets/media/funMonsters/stewie.png';
+import zombie from './assets/media/funMonsters/zombie.png';
+import cube from './assets/media/funMonsters/cube.png';
+import Lordofevil from './assets/media/funMonsters/Lordofevil.png';
+import Aloak from './assets/media/funMonsters/Aloak.png';
+import Firebase from './assets/media/funMonsters/Firebase.png';
 
 export const charactersOBJ = {
   rick,

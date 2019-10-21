@@ -8,6 +8,7 @@ import { startListeningGameChanges } from './game';
 const usersRef = database.ref('users');
 
 export const signIn = (email, password) => (dispatch) => {
+  debugger;
   dispatch({ type: 'ATTEMPTING_LOGIN' });
   auth.signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
@@ -17,7 +18,8 @@ export const signIn = (email, password) => (dispatch) => {
   });
 };
 
-export const SignUp = (email, password) => (dispatch) => {
+export const signUp = (email, password) => (dispatch) => {
+  debugger;
   auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
