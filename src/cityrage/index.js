@@ -12,15 +12,13 @@ import { startListeningGameChanges } from './actions/game';
 
 
 const middleware = [thunk];
-const enhancers = [];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   reducer,
   initialState,
   composeEnhancers(
-    applyMiddleware(...middleware),
-    ...enhancers,
+    applyMiddleware(...middleware)
   ),
 );
 
@@ -30,10 +28,10 @@ store.dispatch(startListeningForUsers());
 store.dispatch(showOnlineUsersAction());
 store.dispatch(startListeningGameChanges());
 
-export const CityRage = () => {
+export const CityRage = (props) => {
   return (
-    <Provider store={store}>
-      <Application />
+    <Provider store={store} >
+      <Application {...props} />
     </Provider>
   );
 }

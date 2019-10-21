@@ -1,16 +1,29 @@
 import { 
   auth,
-  database,
-  GoogleAuthProvider
+  database
   } from '../../database';
 import pick from 'lodash/pick';
 import { startListeningGameChanges } from './game';
 
 const usersRef = database.ref('users');
 
-export const signIn = () => (dispatch) => {
+export const signIn = (email, password) => (dispatch) => {
   dispatch({ type: 'ATTEMPTING_LOGIN' });
-  auth.signInWithPopup(GoogleAuthProvider);
+  auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+};
+
+export const SignUp = (email, password) => (dispatch) => {
+  auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
 };
 
 export const signOut = uid => (dispatch) => {

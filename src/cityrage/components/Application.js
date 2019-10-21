@@ -1,53 +1,121 @@
-import React from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import styled from 'styled-components';
-import SignIn from './SignIn';
-import Loading from './Loading';
-import Lobby from '../containers/LobbyContainer';
-import Home from '../containers/HomeContainer';
-import NewGame from '../containers/NewGameContainer';
-import GamesList from '../containers/GamesListContainer';
-import Rules from '../components/Rules';
-import '../assets/App.css';
-import logo from '../assets/media/iconlrg.png';
+import React from "react";
+import { Link, Route, withRouter, Redirect, Switch } from "react-router-dom";
+import styled, { css } from "styled-components";
+import Loading from "./Loading";
+import Lobby from "../containers/LobbyContainer";
+import Home from "../containers/HomeContainer";
+import NewGame from "../containers/NewGameContainer";
+import GamesList from "../containers/GamesListContainer";
+import Rules from "../components/Rules";
+import "../assets/App.css";
+import logo from "../assets/media/iconlrg.png";
+import SignIn from "./SignIn";
 
-const Application = ({ auth, signIn, signOut }) => (
-  <Router>
-    <main className="Application">
-      <div>
-        <NavContainer>
-          <div><img style={{ width: '40px', padding: '6px', marginLeft: '6px', marginRight: '-10px' }} src={logo} /></div>
-          <div style={{ alignSelf: 'center', fontWeight: 'bold', flex: 1, fontSize: '25px' }} ><Link className="nav-link" to="/">CITYRAGE</Link></div>
-          <div style={{ alignSelf: 'center', float: 'left', flex: 1 }} ><Link className="nav-link" to="/">Home</Link></div>
-          <div style={{ flex: 7 }} />
-          { auth.status === 'ANONYMOUS' && <div style={{ alignSelf: 'center', display: 'flex', alignItems: 'center', float: 'left' }} className="nav-link"><SignIn signIn={signIn} /></div> }
-          { auth.status === 'SIGNED_IN' && <div style={{ alignSelf: 'center', display: 'flex', alignItems: 'center' }} className="nav-link" onClick={() => { auth && signOut(auth.uid) }}>Sign Out</div>}
-        </NavContainer>
-        { auth.status === 'AWAITING_AUTH_RESPONSE' && <Loading /> }
-
-        <Route exact path="/" component={Home} />
+const renderRoutes = status => {
+  debugger;
+  if (status === "ANONYMOUS") {
+    return (
+      <Switch>
+        <Route path="/cityrage/signin" component={SignIn}></Route>
+        <Redirect to="/cityrage/signin" />
+      </Switch>
+    );
+  } else {
+    return (
+      <Switch>
+        <Route exact path="/cityrage" component={Home} />
         <Route path="/newgame" component={NewGame} />
         <Route exact path="/games-list" component={GamesList} />
         <Route path="/games-list/lobby/:game" component={Lobby} />
         <Route path="/rules" component={Rules} />
+      </Switch>
+    );
+  }
+};
+
+const Application = props => {
+  const { auth, signOut } = props;
+
+  return (
+    <main className="Application">
+      <div>
+        <NavContainer>
+          <Column>
+            <img
+              style={{
+                width: "40px",
+                padding: "6px",
+                cursor: "pointer"
+              }}
+              src={logo}
+              onClick={() => props.history.push("/cityrage")}
+            />
+          </Column>
+          <Column>
+            <NavLink to="/">Home</NavLink>
+            {auth.status === "ANONYMOUS" && (
+              <NavLink to="/cityrage/signin">Sign In</NavLink>
+            )}
+            {auth.status === "SIGNED_IN" && (
+              <div
+                style={{
+                  alignSelf: "center",
+                  display: "flex",
+                  alignItems: "center"
+                }}
+                onClick={() => {
+                  auth && signOut(auth.uid);
+                }}
+              >
+                Sign Out
+              </div>
+            )}
+          </Column>
+        </NavContainer>
+        {auth.status === "AWAITING_AUTH_RESPONSE" && <Loading />}
+        {renderRoutes(auth.status)}
       </div>
     </main>
-  </Router>
-);
+  );
+};
+
+const Column = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  :hover {
+    color: white;
+    font-weight: bold;
+  }
+`;
 
 const NavContainer = styled.div`
   height: 60px;
-  box-shadow: grey -1px 3px 12px; 
-  background: #F6A623;   
+  box-shadow: grey -1px 3px 12px;
+  background: #f6a623;
   display: flex;
-  margin-top: -8px;
-  margin-left: -8px;
-  margin-right: -8px;
-  align-items: 'center';
-  align-content: 'center';
-  justify-content: 'center';
+  align-items: "center";
+  align-content: "center";
+  justify-content: space-between;
 `;
 
+const NavStyles = css`
+  margin: 0 3vw;
+  flex: 1;
+  align-items: "center";
+  justify-content: "center";
+  align-self: "center";
+  color: black;
+  text-align: center;
+  cursor: hand;
+  :hover {
+    color: white;
+    font-weight: bold;
+  }
+`;
 
-export default Application;
+const NavLink = styled(Link)`
+  ${NavStyles};
+`;
 
+export default withRouter(Application);
