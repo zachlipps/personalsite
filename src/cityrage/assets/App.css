@@ -1,0 +1,78 @@
+* {
+font-family: 'Roboto', sans-serif;
+}
+
+
+.nav-container {
+
+  height: 60px;
+  box-shadow: grey -1px 3px 12px; 
+  background: #F6A623;   
+  display: flex;
+  margin-top: -8px;
+  margin-left: -8px;
+  margin-right: -8px;
+  align-items: 'center';
+  align-content: 'center';
+  justify-content: 'center';
+  
+}
+.nav-link {
+  flex:1;
+  align-items: 'center';
+  align-content: 'center';
+  justify-content: 'center';
+  align-self: 'center';
+  margin-left: 10px;
+  margin-right: 10px;   
+  color:black;  
+  text-align: center;  
+  cursor: hand;
+}
+.nav-right {
+  float: left;
+}
+.nav-link:hover {  
+  color: white;
+  font-weight: bold;  
+}
+
+
+
+.dice {
+  font-weight: bold;
+  margin: 5px;
+  box-shadow: grey -1px 3px 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 60px;
+  font-size: 30px;
+  border-radius: 6px;
+  height: 60px;
+  background-color: black;
+  color: #F5A623;
+  cursor: pointer; 
+  cursor: hand;
+}
+
+.dice-toggled {
+  font-weight: bold;
+  margin: 10px;
+  box-shadow: grey -1px 3px 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 50px;
+  font-size: 30px;
+  border-radius: 2px;
+  height: 50px;
+  background-color: #BD0FE1;
+  color: #F5A623;
+  cursor: pointer; 
+  cursor: hand;
+}
+button {
+  cursor: pointer; 
+  cursor: hand;
+}

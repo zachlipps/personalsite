@@ -6,27 +6,15 @@ import {
   Link
 } from "react-router-dom";
 import { Home } from './home';
+import { CityRage } from './cityrage';
 
 function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/cityrage">City Rage</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/cityrage">
-            <Home />
+            <CityRage />
           </Route>
           <Route path="/">
             <Home />

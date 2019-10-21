@@ -1,0 +1,41 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  /*border: 1px solid red;*/
+}
+.new_game_form {
+display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 2px;
+    /* border: 2px solid #ffff5a; */
+    box-shadow: grey -1px 3px 12px;
+    background: #F6A623;
+    /* opacity: 0.9; */
+    width: 900px;
+    height: 115px;
+    margin: 2px;
+    color: white;
+}
+.new-game-input {
+  padding: 12px;
+  font-size: 30px;
+  border-radius: 4px;
+}
+.create-game-bttn {
+  background-color: #1b1b1b;
+  color: ghostwhite;
+  border-radius: 4px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}

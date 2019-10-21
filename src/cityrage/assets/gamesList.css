@@ -1,0 +1,37 @@
+.lobby_tiles_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: column;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: column;
+    /* margin-top: 1px; */
+    /* overflow: scroll; */
+}
+.lobby_tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  border: 2px solid black;
+  box-shadow: grey -1px 3px 12px; 
+  background: white;
+  opacity: 0.7;
+  height: 120px;
+  min-width: 175px;
+  margin: 5px;
+  color: black;
+}
+.lobby_tile > button {
+  display: flex;
+  margin-top: 15px;
+  border-radius: 4px;
+  background-color: black;
+  padding: 5px;
+  color: ghostwhite;
+}
+.room_name {
+  font-weight: light;
+}
