@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from '../components/Game';
-import { startGame, endTurn } from '../actions/game';
+import { startGame } from '../actions/game';
 import { marketListener } from '../actions/market';
 
 

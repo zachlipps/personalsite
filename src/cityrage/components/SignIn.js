@@ -9,7 +9,7 @@ const SignIn = ({ signIn, signUp }) => {
 
   const handleClick = (fn, params) => {
     let newErrors = [];
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       let error = "You have entered an invalid email address!";
       newErrors.push(error);
     }

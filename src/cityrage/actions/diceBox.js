@@ -5,8 +5,6 @@ import { setKing } from './kickKing';
 import { gameSettings } from '../initial-state';
 import fire from '../Cards/effects';
 
-const game = database.ref('games/aqwewq334');
-
 const diceOptions = {
   1: '1',
   2: '2',
@@ -95,7 +93,7 @@ export const selectDice = (die, uid, chosenId) => (dispatch, storeState) => {
   const gid = storeState().auth.gid;
   const game = database.ref(`games/${gid}`);
 
-  if (uid == chosenId) {
+  if (uid === chosenId) {
     let valueOfSelected;
     let valueOfVal;
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import { database } from '../../database';
 import { charactersOBJ } from '../initial-state';
-
 import map from 'lodash/map';
 import DiceBox from '../containers/DiceBoxContainer';
 import energy from '../assets/media/energy.png';
@@ -41,9 +39,9 @@ class CurrentUser extends React.Component {
   }
 
   revealHand(uid) {
-    this.state.showHand[uid] = !this.state.showHand[uid];
-    // this.setState = { reRender: !this.state.reRender };
-    this.forceUpdate();
+    this.setState({
+      [this.state.showHand[uid]] : !this.state.showHand[uid]
+    })
   }
 
   checkKing() {
@@ -79,8 +77,6 @@ class CurrentUser extends React.Component {
 
 
   render() {
-    const { auth } = this.props;
-
     return (
       <div className="CurrentUser">
         <div className="CurrentUser--identification" style={{ flexDirection: 'column', display: 'flex' }}>
@@ -97,7 +93,7 @@ class CurrentUser extends React.Component {
               <div key={player.uid} >
                 <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '15px' }}>
                   <div style={{ marginLeft: '20px', flex: 1 }} >
-                    { (player.uid == this.props.game.chosenOne.uid) && <DiceBox auth={this.props.auth} />}
+                    { (player.uid === this.props.game.chosenOne.uid) && <DiceBox auth={this.props.auth} />}
                   </div>
                   <div key={player.uid} className={this.stlyeChosenOne(player.uid)} style={{ display: 'flex', flex: 1, maxWidth: '400px', flexDirection: 'row', alignItems: 'center', borderTopLeftRadius: 10, borderTopRightRadius: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, paddingLeft: '10px', paddingRight: '10px', cursor: 'pointer' }} onClick={() => this.revealHand(uid)}>
                     <div style={{ flex: 1 }}><img style={{ margin: '10px', width: '100px', height: '100px', borderRadius: 100 }} src={charactersOBJ[this.props.game.players[player.uid].character.image]} alt={player.photoURL} /></div>
@@ -108,19 +104,19 @@ class CurrentUser extends React.Component {
                         <div style={{ flex: 1, flexDirection: 'row', display: 'flex' }}>
 
                           <div style={{ flex: 1, flexDirection: 'row', display: 'flex', alignItems: 'center' }}>
-                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={health} /></div>
+                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={health} alt='' /></div>
                             <div style={{ flex: 1, margin: '5px', fontSize: '16px' }}> {player.stats.health}</div>
                           </div>
                           <div style={{ flex: 1, flexDirection: 'row', display: 'flex', alignItems: 'center' }}>
-                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={energy} /></div>
+                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={energy} alt='' /></div>
                             <div style={{ flex: 1, margin: '5px', fontSize: '16px' }}> {player.stats.energy}</div>
                           </div>
                           <div style={{ flex: 1, flexDirection: 'row', display: 'flex', alignItems: 'center' }}>
-                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={points} /></div>
+                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={points} alt='' /></div>
                             <div style={{ flex: 1, margin: '5px', fontSize: '16px' }}> {player.stats.points}</div>
                           </div>
                           <div style={{ flex: 1, flexDirection: 'row', display: 'flex', alignItems: 'center' }}>
-                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={playerHandImage} /></div>
+                            <div style={{ flex: 1, margin: '5px' }}><img style={{ width: '25px', height: '25px' }} src={playerHandImage} alt='' /></div>
                             <div style={{ flex: 1, margin: '5px', fontSize: '16px' }}> { player.hand ? player.hand.length : 0 }</div>
                           </div>
 
@@ -130,24 +126,11 @@ class CurrentUser extends React.Component {
                   </div>
                   <div style={{ display: 'flex', flex: 1, flexDirection: 'row', alignItems: 'center' }}><div style={{ marginLeft: '15px' }}>{((player.uid === this.props.game.king.uid) && this.checkKing()) && <KickKing />}</div></div>
                 </div>
-                { !this.state.showHand[uid] ? this.state.showHand[uid] = false : null }
                 {this.state.showHand[uid] && Array.isArray(player.hand) && <PlayerHand cards={player.hand} />}
               </div>
               ))
             }
           </div>
-          {/* <button onClick={() => this.revealHand()}>{this.state.showHand ? 'HideCards' : 'ShowCards'}</button>*/}
-          {/*
-
-          <button onClick={() => { this.props.increaseHealth(auth.uid); }} >up health</button>
-
-          <button onClick={() => { this.props.increaseHealth(auth.uid); }} >up health</button>
-
-          <button onClick={() => { this.props.decreaseHealth(auth.uid); }}>down health</button>
-          <button onClick={() => { this.props.increasePoints(auth.uid); }} >up Points</button>
-          <button onClick={() => { this.props.decreasePoints(auth.uid); }}>down Points</button>
-          <button onClick={() => { this.props.increaseEnergy(auth.uid); }} >up Energy</button>
-          <button onClick={() => { this.props.decreaseEnergy(auth.uid); }}>down Energy</button>*/}
         </div>
       </div >
     );

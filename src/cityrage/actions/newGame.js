@@ -38,5 +38,5 @@ export const createNewGame = (name, numPlayers = 4) => (dispatch) => {
         { name: 'Firebase', image: 'Firebase', selected: false },
       ],
     });
-  dispatch({ type: 'ADD_USER', type: 'user' });
+  dispatch({ type: 'ADD_USER' });
 };

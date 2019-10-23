@@ -43,7 +43,7 @@ export default class Game extends React.Component {
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ position: 'relative', flex: 1, display: 'flex', alignContent: 'center', justifyContent: 'center' }}>
-          <img style={{ display: 'flex', flex: 1, height: '190px', alignItems: 'center', marginTop: '-5px', zIndex: -1 }} src={map} />
+          <img style={{ display: 'flex', flex: 1, height: '190px', alignItems: 'center', marginTop: '-5px', zIndex: -1 }} src={map} alt='' />
 
           { this.props.game.king.uid && <div
             style={{
@@ -62,7 +62,9 @@ export default class Game extends React.Component {
                 /* borderRadius: '100%', */
                 borderColor: 'black',
                 borderWidth: '2px',
-              }} src={charactersOBJ[this.kingOrWinnerImage()]}
+              }} 
+              src={charactersOBJ[this.kingOrWinnerImage()]}
+              alt=''
             />
             <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '25px' }}>{this.kingOrWinnerText()}</div>
           </div>}

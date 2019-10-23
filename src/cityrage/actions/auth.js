@@ -12,8 +12,8 @@ export const signIn = (email, password) => (dispatch) => {
   dispatch({ type: 'ATTEMPTING_LOGIN' });
   auth.signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
     // ...
   });
 };
@@ -22,8 +22,8 @@ export const signUp = (email, password) => (dispatch) => {
   debugger;
   auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
     // ...
   });
 };

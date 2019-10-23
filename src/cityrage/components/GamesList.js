@@ -137,12 +137,6 @@ const ErrorBanner = styled.div`
   color: white;
 `;
 
-const Container = styled.div`
-  display: flex;
-  
-`;
-
-
 const MaxWidth = styled.div`
   display: flex;
   width: 100%;

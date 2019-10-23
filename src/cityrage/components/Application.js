@@ -51,6 +51,7 @@ const Application = props => {
             }}
             src={logo}
             onClick={() => props.history.push("/cityrage")}
+            alt=''
           />
         </Column>
         <Column>

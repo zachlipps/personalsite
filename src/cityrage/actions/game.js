@@ -46,7 +46,7 @@ export const startGame = () => (dispatch, storeState) => {
   Promise.all(promises)
     .then(([userIDS, nameMap]) => {
       if (userIDS.val() && userIDS.val().length >= gameSettings.minPlayers) {
-        userIDS.val().map((userID, idx) => {
+        userIDS.val().forEach((userID, idx) => {
           playerArr.push(initializePlayer(userID, idx, nameMap.val()[userID]));
         });
         return playerArr;
@@ -55,7 +55,7 @@ export const startGame = () => (dispatch, storeState) => {
     .then(players => Promise.all(players))
     .then(resolvedPlayerArray => {
       const playerObj = {};
-      resolvedPlayerArray.map(el => {
+      resolvedPlayerArray.forEach(el => {
         playerObj[el[0]] = el[1];
       });
       game.child("players").set(playerObj);

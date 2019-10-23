@@ -3,9 +3,6 @@ import '../assets/market.css';
 import energy from '../assets/media/energy.png';
 
 class Market extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
     this.props.marketListener();

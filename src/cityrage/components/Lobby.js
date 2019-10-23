@@ -20,8 +20,8 @@ export default class Lobby extends React.Component {
           </Link>
         </div>
         <div className="column2">
-          {this.props.lobby.map(person => <div style={{ width: '250px', height: '70px', alignItems: 'center', display: 'flex', flexDirection: 'row', flex: 1, backgroundColor: 'lightblue', borderRadius: '10px', margin: '10px', padding: '10px', boxShadow: 'grey -1px 3px 10px', backgroundColor: 'white' }} key={person}>
-            <div style={{ flex: 1 }}><img style={{ borderRadius: '100%', width: '75px' }} src={person[1]} /></div>
+          {this.props.lobby.map(person => <div style={{ width: '250px', height: '70px', alignItems: 'center', display: 'flex', flexDirection: 'row', flex: 1, borderRadius: '10px', margin: '10px', padding: '10px', boxShadow: 'grey -1px 3px 10px', backgroundColor: 'white' }} key={person}>
+            <div style={{ flex: 1 }}><img style={{ borderRadius: '100%', width: '75px' }} src={person[1]} alt='' /></div>
             <div style={{ flex: 1 }}>{person[0]}</div>
           </div>)}
         </div>

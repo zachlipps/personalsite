@@ -4,9 +4,6 @@ import energy from '../assets/media/energy.png';
 import '../assets/playerhand.css';
 
 class PlayerHand extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   createHand() {
     return this.props.cards.map(card => (
