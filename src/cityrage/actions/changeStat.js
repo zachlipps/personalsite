@@ -7,7 +7,6 @@ export const changeStat = (uid, absChange = -5, stat = 'health') => (dispatch, s
 
   game.child(`players/${uid}`).once('value')
   .then((snapshot) => {
-    const displayName = snapshot.val().displayName;
     let currentStat = snapshot.val().stats[stat];
 
     currentStat += absChange;

@@ -243,7 +243,7 @@ export const endTurn = () => (dispatch, storeState) => {
       game.child('/submitted').set(false);
       game.child('/diceBox').set(defaultDice);
       if (player) {
-        game.child('/chosenOne').set({ uid: player.val().uid, displayName: player.val().displayName, photoURL: player.val().photoURL, character: player.val().character });
+        game.child('/chosenOne').set({ uid: player.val().uid, displayName: player.val().displayName, character: player.val().character });
       }
       game.child('kingAttackedOnTurn').set(false);
 
