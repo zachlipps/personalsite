@@ -59,7 +59,7 @@ const Application = props => {
             <NavLink to="/cityrage/signin">Sign In</NavLink>
           )}
           {auth.status === "SIGNED_IN" && (
-            <div
+            <NavLink
               style={{
                 alignSelf: "center",
                 display: "flex",
@@ -70,7 +70,7 @@ const Application = props => {
               }}
             >
               Sign Out
-            </div>
+            </NavLink>
           )}
         </Column>
       </NavContainer>

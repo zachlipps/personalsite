@@ -12,7 +12,7 @@ function App() {
           <Route path="/cityrage">
             <CityRage />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </AppContainer>

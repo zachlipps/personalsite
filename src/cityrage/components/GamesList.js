@@ -9,7 +9,8 @@ export default class GamesList extends React.Component {
     this.state = {
       gid: "",
       joined: false,
-      nickName: ""
+      nickName: "",
+      errorBanner: ""
     };
 
     this.changeGid = this.changeGid.bind(this);
@@ -30,6 +31,14 @@ export default class GamesList extends React.Component {
     })
   };
 
+  handleSubmit = (gid) => {
+    if (this.state.nickName.length) {
+      this.props.joinGame(this.props.auth.uid, gid, this.state.nickName);
+    } else {
+      this.setState({ errorBanner : 'Please enter your player\'s name'});
+    }
+  }
+
   renderLobbyTiles() {
     return (
       <div className="lobby_tiles_container" style={{ padding: "20px" }}>
@@ -42,7 +51,7 @@ export default class GamesList extends React.Component {
               key={gameItem.gid}
               onClick={() => {
                 this.changeGid(gameItem.gid);
-                this.props.joinGame(this.props.auth.uid, gameItem.gid, this.state.nickName);
+                this.handleSubmit(gameItem.gid)
                 this.setState({ joined: true });
               }}
             >
@@ -91,6 +100,7 @@ export default class GamesList extends React.Component {
     return (
       <div>
         {!this.state.joined ? (
+          <div> 
           <div>
             <div
               style={{
@@ -104,11 +114,13 @@ export default class GamesList extends React.Component {
             >
               GAME LIST
             </div>
-            <MaxWidth>
-              
-              <InputContainer><Label>Player NickName</Label><Input name="nickname" onChange={this.updateNickName}></Input></InputContainer>
-            </MaxWidth>
             <div>{this.renderLobbyTiles()}</div>
+            </div>
+            <div>
+            <MaxWidth>
+              <InputContainer><Label>Player NickName</Label><Input name="nickname" onChange={this.updateNickName}></Input><ErrorBanner>{this.state.errorBanner}</ErrorBanner></InputContainer>
+            </MaxWidth>
+            </div>
           </div>
         ) : (
           <div>{this.state.gid !== "" && <Lobby gid={this.state.gid} />}</div>
@@ -118,6 +130,17 @@ export default class GamesList extends React.Component {
   }
 }
 
+
+const ErrorBanner = styled.div`
+  display: flex;
+  background-color: tomato;
+  color: white;
+`;
+
+const Container = styled.div`
+  display: flex;
+  
+`;
 
 
 const MaxWidth = styled.div`
