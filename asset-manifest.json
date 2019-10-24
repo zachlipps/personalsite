@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/personalsite/static/css/main.70a4f581.chunk.css",
+    "main.js": "/personalsite/static/js/main.08729cca.chunk.js",
+    "main.js.map": "/personalsite/static/js/main.08729cca.chunk.js.map",
+    "runtime-main.js": "/personalsite/static/js/runtime-main.4a1c4789.js",
+    "runtime-main.js.map": "/personalsite/static/js/runtime-main.4a1c4789.js.map",
+    "static/js/2.b28e4bf4.chunk.js": "/personalsite/static/js/2.b28e4bf4.chunk.js",
+    "static/js/2.b28e4bf4.chunk.js.map": "/personalsite/static/js/2.b28e4bf4.chunk.js.map",
+    "index.html": "/personalsite/index.html",
+    "precache-manifest.d4ba4280f99170e0e8f10540165ca720.js": "/personalsite/precache-manifest.d4ba4280f99170e0e8f10540165ca720.js",
+    "service-worker.js": "/personalsite/service-worker.js",
+    "static/css/main.70a4f581.chunk.css.map": "/personalsite/static/css/main.70a4f581.chunk.css.map",
+    "static/media/Aloak.png": "/personalsite/static/media/Aloak.ce3b2e6e.png",
+    "static/media/Firebase.png": "/personalsite/static/media/Firebase.dae7f44a.png",
+    "static/media/Lordofevil.png": "/personalsite/static/media/Lordofevil.f669e96d.png",
+    "static/media/cenaSmash.png": "/personalsite/static/media/cenaSmash.28661847.png",
+    "static/media/cube.png": "/personalsite/static/media/cube.b336020f.png",
+    "static/media/cyberKitty.png": "/personalsite/static/media/cyberKitty.3ecd593b.png",
+    "static/media/gigazaur.png": "/personalsite/static/media/gigazaur.e4bb7973.png",
+    "static/media/golfMeeseeks.png": "/personalsite/static/media/golfMeeseeks.0a85dd2e.png",
+    "static/media/gollum.png": "/personalsite/static/media/gollum.712fd919.png",
+    "static/media/kingDedede.png": "/personalsite/static/media/kingDedede.f734d574.png",
+    "static/media/pekka.png": "/personalsite/static/media/pekka.ec78c31b.png",
+    "static/media/rick.png": "/personalsite/static/media/rick.496b8712.png",
+    "static/media/sf-map.png": "/personalsite/static/media/sf-map.c3befcce.png",
+    "static/media/stewie.png": "/personalsite/static/media/stewie.cc1007ee.png",
+    "static/media/zombie.png": "/personalsite/static/media/zombie.dad13449.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4a1c4789.js",
+    "static/js/2.b28e4bf4.chunk.js",
+    "static/css/main.70a4f581.chunk.css",
+    "static/js/main.08729cca.chunk.js"
+  ]
+}
